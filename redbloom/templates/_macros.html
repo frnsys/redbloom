@@ -1,0 +1,21 @@
+{% macro post_item(post, show_date=True) -%}
+<div class="post-item">
+    {% set url = url_for('redbloom.post', issue=post.issue.slug, slug=post.slug) %}
+    <div class="post-item--image">
+        <a href="{{ url }}"><img src="{{ post.image.path }}" /></a>
+    </div>
+    <div class="post-item--body">
+        <h2><a href="{{ url }}">{{ post.title }}</a></h2>
+        {% if show_date %}
+            <div class="post-item--meta">
+                {% if post.event %}
+                    {{ post.event }}
+                {% else %}
+                    {{ post.published_at.strftime('%B %-d, %Y') }}
+                {% endif %}
+            </div>
+        {% endif %}
+        <p>{{ post.desc }}</p>
+    </div>
+</div>
+{%- endmacro %}

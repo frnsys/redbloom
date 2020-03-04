@@ -1,0 +1,8 @@
+{% from "_macros.html" import post_item %}
+{% extends 'layout.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        {{ post_item(post) }}
+    {% endfor %}
+{% endblock %}

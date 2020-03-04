@@ -1,0 +1,10 @@
+{% from "_macros.html" import post_item %}
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h1 class="page-title">Events</h1>
+    {% for post in events %}
+        {{ post_item(post) }}
+    {% endfor %}
+</div>
+{% endblock %}

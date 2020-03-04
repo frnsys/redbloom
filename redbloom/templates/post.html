@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block meta %}
+  <meta property="og:site_name" content="Red Bloom">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:url" content="{{ request.url }} ">
+  <meta property="og:image" content="{{ post.image.url }}" />
+  <meta property="og:description" content="{{ post.desc }}">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@NycRedbloom">
+  <meta name="twitter:title" content="{{ post.title }}">
+  <meta name="twitter:image" content="{{ post.image.url }}" />
+  <meta name="twitter:image:alt" content="{{ post.title }}">
+  <meta name="twitter:description" content="{{ post.desc }}">
+  <meta name="twitter:creator" content="@NycRedbloom">
+{% endblock %}
+
+
+{% block content %}
+<article>
+    <figure>
+        <img src="{{ post.image.path }}" />
+    </figure>
+    <div class="post--header">
+        <h2>{{ post.title }}</h2>
+        <div class="post--date">
+            {% if post.issue.slug != 'working-groups' %}
+                {% if post.event %}
+                    {{ post.event }}
+                {% else %}
+                    {{ post.published_at.strftime('%B %-d, %Y') }}
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+    <div>
+        {{ post.html|safe }}
+    </div>
+</article>
+{% endblock %}

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin|Marcellus|Source+Sans+Pro&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+}
+
+a, a:visited {
+  color: #DB3A42;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-family: 'Marcellus', serif;
+  font-weight: normal;
+  font-size: 1.8em;
+}
+h2 {
+  font-family: 'Marcellus', serif;
+  font-weight: normal;
+  margin: 0;
+}
+
+header {
+  text-align: center;
+  background: #DB3A42;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+}
+header h1 {
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+.logo {
+  width: 36px;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
+nav {
+  padding: 0.5em;
+  max-width: 560px;
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+  font-family: 'Cabin', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+header a, header a:visited {
+  color: #fff;
+  text-decoration: none;
+}
+
+footer {
+  padding: 0.5em;
+  background: #DB3A42;
+  color: #fff;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 2em 0;
+}
+
+.post-item {
+  margin: 3em 0;
+}
+.post-item--image {
+  margin: 1em 0;
+}
+.post-item--image img {
+  max-width: 100%;
+  max-height: 240px;
+  display: block;
+  margin: 0 auto;
+}
+.post-item--meta {
+  font-size: 0.9em;
+  /* color: #dd7b7b; */
+  color: #606060;
+}
+
+.post--header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  border-bottom: 2px solid #FFDFE0;
+}
+.post--header h2 {
+  font-size: 2em;
+  color: #DB3A42;
+}
+.post--header .post--date {
+  color: #989898;
+  padding: 1em 0 0 0;
+}
+
+figure {
+  margin: 0 0 1em 0;
+  padding: 0;
+  text-align: center;
+}
+
+article {
+  margin: 3em 0 5em 0;
+}
+
+.page-title {
+  border-bottom: 1px solid #ffb8b8;
+}
