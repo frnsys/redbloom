@@ -15,6 +15,23 @@
         </div>
     {% endif %}
     <div class="content">
+        <div class="upcoming-events">
+            <h2>Upcoming Events</h2>
+            {% for post in events %}
+                <div class="event-item">
+                    <div class="event-item--image">
+                        <a href="{{ url }}"><img src="{{ post.image.path }}" /></a>
+                    </div>
+                    <div class="event-item--body">
+                        <h2><a href="{{ url }}">{{ post.title }}</a></h2>
+                        {{ post.event }}
+                        <p>{{ post.desc }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <h2>Latest News</h2>
         {% for post in posts %}
             {{ post_item(post) }}
         {% endfor %}

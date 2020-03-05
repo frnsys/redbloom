@@ -166,6 +166,19 @@ article {
   z-index: 0;
 }
 
+.upcoming-events {
+  margin: 2em 0 4em 0;
+}
+
+.event-item {
+  display: flex;
+  margin: 1em 0;
+}
+.event-item--image {
+  max-width: 80px;
+  margin-right: 1em;
+}
+
 @media only screen and (max-width: 480px) {
   header {
     display: block;
