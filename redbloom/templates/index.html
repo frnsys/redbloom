@@ -2,7 +2,21 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    {% for post in posts %}
-        {{ post_item(post) }}
-    {% endfor %}
+    {% if featured %}
+        <div class="featured-post" style="background-image:url({{ featured.image.path }})";>
+            {% set url = url_for('redbloom.post', issue=featured.issue.slug, slug=featured.slug) %}
+            <div class="featured-post--info">
+                <h2><a href="{{ url }}">{{ featured.title }}</a></h2>
+                {% if featured.event %}
+                    <h3>{{ featured.event }}</h3>
+                {% endif %}
+            </div>
+            <a class="featured-post--link" href="{{ url }}"></a>
+        </div>
+    {% endif %}
+    <div class="content">
+        {% for post in posts %}
+            {{ post_item(post) }}
+        {% endfor %}
+    </div>
 {% endblock %}

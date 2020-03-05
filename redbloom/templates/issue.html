@@ -2,10 +2,12 @@
 {% extends 'layout.html' %}
 
 {% block content %}
+<div class="content">
     <h1 class="page-title">{{ issue.name }}</h1>
     {% for post in issue.published_posts|sort(attribute='published_at') %}
         {% if not post.event %}
             {{ post_item(post, show_date=issue.slug != 'working-groups') }}
         {% endif %}
     {% endfor %}
+</div>
 {% endblock %}

@@ -6,8 +6,9 @@ routes = Blueprint('redbloom', __name__)
 
 @routes.route('/')
 def index():
+    featured = Post.query.filter(Post.published, Post.issue.has(slug='general'), Post.tags.contains('featured')).first()
     posts = Post.query.filter(Post.published, Post.issue.has(slug='general')).limit(3)
-    return render_template('index.html', posts=posts)
+    return render_template('index.html', featured=featured, posts=posts)
 
 @routes.route('/<issue>/<slug>')
 def post(issue, slug):

@@ -18,24 +18,26 @@
 
 
 {% block content %}
-<article>
-    <figure>
-        <img src="{{ post.image.path }}" />
-    </figure>
-    <div class="post--header">
-        <h2>{{ post.title }}</h2>
-        <div class="post--date">
-            {% if post.issue.slug != 'working-groups' %}
-                {% if post.event %}
-                    {{ post.event }}
-                {% else %}
-                    {{ post.published_at.strftime('%B %-d, %Y') }}
+<div class="content">
+    <article>
+        <figure>
+            <img src="{{ post.image.path }}" />
+        </figure>
+        <div class="post--header">
+            <h2>{{ post.title }}</h2>
+            <div class="post--date">
+                {% if post.issue.slug != 'working-groups' %}
+                    {% if post.event %}
+                        {{ post.event }}
+                    {% else %}
+                        {{ post.published_at.strftime('%B %-d, %Y') }}
+                    {% endif %}
                 {% endif %}
-            {% endif %}
+            </div>
         </div>
-    </div>
-    <div>
-        {{ post.html|safe }}
-    </div>
-</article>
+        <div>
+            {{ post.html|safe }}
+        </div>
+    </article>
+</div>
 {% endblock %}

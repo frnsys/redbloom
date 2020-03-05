@@ -75,10 +75,10 @@ footer {
   width: 100%;
 }
 
-main {
+.content {
   max-width: 640px;
+  padding: 0 0 2em 0;
   margin: 0 auto;
-  padding: 2em 0;
 }
 
 .post-item {
@@ -126,4 +126,42 @@ article {
 
 .page-title {
   border-bottom: 1px solid #ffb8b8;
+}
+
+.featured-post {
+  height: 75vh;
+  width: 100%;
+  background-size: cover;
+  background-position: top center;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+.featured-post a, .featured-post a:visited {
+  color: #fff;
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+.featured-post--info {
+  background: #DB3A42;
+  display: inline-block;
+  color: #fff;
+  margin: 2em 0 0 2em;
+  position: relative;
+  z-index: 1;
+}
+.featured-post--info h3 {
+  margin: 0;
+  font-weight: normal;
+  padding: 0.25em 0.5em;
+}
+.featured-post--link {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 0;
 }
