@@ -28,10 +28,6 @@ def events():
 def about():
     return render_template('about.html')
 
-@routes.route('/donate')
-def donate():
-    return render_template('donate.html')
-
 @routes.route('/get-involved')
 def get_involved():
     return render_template('get_involved.html')
