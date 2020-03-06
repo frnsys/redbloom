@@ -55,7 +55,7 @@ header h1 {
 
 nav {
   padding: 0.5em;
-  max-width: 560px;
+  max-width: 420px;
   display: flex;
   justify-content: space-between;
   flex: 1;
