@@ -1,4 +1,7 @@
 import json
+import calendar
+from datetime import datetime
+from collections import defaultdict
 from flask_security import current_user
 from taozi.models import Post, Event, Issue
 from flask import Blueprint, render_template, abort, current_app
@@ -30,9 +33,22 @@ def post(issue, slug):
 
 @routes.route('/events')
 def events():
-    events = [e.post for e in Event.query.order_by(Event.start.desc(), Event.end.desc()).all() if e.post.published]
-    events.reverse()
-    return render_template('events.html', events=events)
+    today = datetime.now()
+    month = today.month
+    year = today.year
+    first_weekday, num_days = calendar.monthrange(year, month)
+    start = datetime(year, month, 1)
+    end = datetime(year, month, num_days)
+    events = [e for e in Event.query.filter(Event.start.between(start, end)).order_by(Event.start.asc(), Event.end.desc()).all() if e.post.published]
+    events_by_day = defaultdict(list)
+    for event in events:
+        events_by_day[event.start.day].append(event)
+    return render_template('events.html',
+            events_by_day=events_by_day,
+            month=month, year=year,
+            first_weekday=first_weekday,
+            month_name=calendar.month_name[month],
+            num_days=num_days)
 
 @routes.route('/')
 def about():
@@ -49,7 +65,6 @@ def get_involved():
 @routes.context_processor
 def inject_user():
     wgs = Issue.query.filter(Issue.published, Issue.slug != 'red-bloom').all()
-    print(wgs[0].meta)
     wgs_json = json.dumps([{
         'name': wg.name,
         'slug': wg.slug,

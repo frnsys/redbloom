@@ -19,7 +19,7 @@ body {
   max-width: 900px;
   padding-top: 80px;
 }
-main {
+.content {
   margin: 0 auto;
   max-width: 560px;
 }
@@ -151,6 +151,36 @@ figure img {
   max-width: 100%;
 }
 
+.content-calendar {
+  max-width: 960px;
+  margin-left: 9em;
+}
+.month {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.calendar--day {
+  width: 14.28%;
+  display: inline-block;
+  vertical-align: top;
+  min-height: 120px;
+}
+.calendar--day-label {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+.calendar--event {
+  line-height: 1;
+  margin-bottom: 0.25em;
+}
+.calendar--event a {
+  text-transform: none;
+  text-decoration: none;
+  letter-spacing: 0px;
+}
+.calendar--event-time {
+  font-size: 0.8em;
+}
 
 /* For calculating path: http://complexdan.com/svg-circleellipse-to-path-converter/ */
 .get-involved {

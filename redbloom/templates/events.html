@@ -2,13 +2,27 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class="content">
-    {% if not events %}
-        <div class="placeholder">No events yet.</div>
-    {% else %}
-        {% for post in events %}
-            {{ post_item(post, show_date=true, wg=post.issue) }}
+<div class="content content-calendar">
+    <div class="month">{{ month_name }} {{ year }}</div>
+    <div class="calendar">
+        {# Empty days #}
+        {% for i in range(first_weekday) %}
+            <div class="calendar--day"></div>
         {% endfor %}
-    {% endif %}
+        {% for i in range(num_days) %}
+            <div class="calendar--day">
+                <div class="calendar--day-label">{{ i+1 }}</div>
+                {% for event in events_by_day[i+1] %}
+                    {% set url = url_for('redbloom.post', issue=event.post.issue.slug, slug=event.post.slug) %}
+                    <div class="calendar--event">
+                        <div class="calendar--event-time">
+                            <a href="{{ url }}" style="{{event.post.issue.style}};color:{{event.post.issue.color}}">{{event.time_range()}}</a>
+                        </div>
+                        <a href="{{ url }}" style="{{event.post.issue.style}};color:{{event.post.issue.color}}">{{ event.post.title }}</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
