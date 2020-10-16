@@ -1,11 +1,8 @@
-{% macro post_item(post, show_date=True) -%}
+{% macro post_item(post, show_date=True, wg=None) -%}
 <div class="post-item">
     {% set url = url_for('redbloom.post', issue=post.issue.slug, slug=post.slug) %}
-    <div class="post-item--image">
-        <a href="{{ url }}"><img src="{{ post.image.path }}" /></a>
-    </div>
     <div class="post-item--body">
-        <h2><a href="{{ url }}">{{ post.title }}</a></h2>
+        <h2><a href="{{ url }}" {% if wg %}style="{{wg.style}};color:{{wg.color}}"{%else%}class="red-bloom"{% endif %}>{{ post.title }}</a></h2>
         {% if show_date %}
             <div class="post-item--meta">
                 {% if post.event %}

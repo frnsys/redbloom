@@ -3,9 +3,12 @@
 
 {% block content %}
 <div class="content">
-    <h1 class="page-title">Events</h1>
-    {% for post in events %}
-        {{ post_item(post) }}
-    {% endfor %}
+    {% if not events %}
+        <div class="placeholder">No events yet.</div>
+    {% else %}
+        {% for post in events %}
+            {{ post_item(post, show_date=true, wg=post.issue) }}
+        {% endfor %}
+    {% endif %}
 </div>
 {% endblock %}

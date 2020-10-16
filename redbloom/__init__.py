@@ -1,15 +1,25 @@
+import json
 from flask_security import current_user
 from taozi.models import Post, Event, Issue
-from flask import Blueprint, render_template, abort
+from flask import Blueprint, render_template, abort, current_app
 
 routes = Blueprint('redbloom', __name__)
 
-@routes.route('/')
-def index():
-    featured = Post.query.filter(Post.published, Post.issue.has(slug='general'), Post.tags.contains('featured')).first()
-    posts = Post.query.filter(Post.published, Post.issue.has(slug='general'), Post.event==None).limit(3)
-    events = Post.query.filter(Post.published, Post.issue.has(slug='general'), Post.event!=None).limit(3)
-    return render_template('index.html', featured=featured, posts=posts, events=events)
+@routes.route('/news')
+def news():
+    featured = Post.query.filter(Post.published, Post.tags.contains('featured')).all()
+    posts = Post.query.filter(Post.published, Post.event==None).limit(20)
+    return render_template('index.html', featured=featured, posts=posts)
+
+@routes.route('/working-groups')
+def working_groups():
+    working_groups = Issue.query.filter(Issue.published, Issue.slug != 'red-bloom').all()
+    return render_template('working_groups.html', working_groups=working_groups)
+
+@routes.route('/working-groups/<slug>')
+def working_group(slug):
+    working_group = Issue.query.filter(Issue.published, Issue.slug==slug).first_or_404()
+    return render_template('issue.html', issue=working_group)
 
 @routes.route('/<issue>/<slug>')
 def post(issue, slug):
@@ -24,11 +34,26 @@ def events():
     events.reverse()
     return render_template('events.html', events=events)
 
-@routes.route('/about')
+@routes.route('/')
 def about():
     return render_template('about.html')
+
+@routes.route('/points-of-unity')
+def points_of_unity():
+    return render_template('points_of_unity.html')
 
 @routes.route('/get-involved')
 def get_involved():
     return render_template('get_involved.html')
 
+@routes.context_processor
+def inject_user():
+    wgs = Issue.query.filter(Issue.published, Issue.slug != 'red-bloom').all()
+    print(wgs[0].meta)
+    wgs_json = json.dumps([{
+        'name': wg.name,
+        'slug': wg.slug,
+        'style': wg['style'],
+        'color': wg['color']
+    } for wg in wgs])
+    return dict(wgs=wgs, wgs_json=wgs_json)

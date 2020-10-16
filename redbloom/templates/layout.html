@@ -20,7 +20,7 @@
       <meta name="twitter:card" content="summary">
       <meta name="twitter:title" content="Red Bloom">
       <meta name="twitter:image" content="{{ url_for('static', filename='logo.jpg') }}" />
-      <meta name="twitter:image:alt" content="Burning cop car">
+      <meta name="twitter:image:alt" content="A blooming hammer and sickle">
       <meta name="twitter:description" content="Red Bloom: A Communist Collective">
       <meta name="twitter:creator" content="@NycRedbloom">
       <meta name="twitter:site" content="@NycRedbloom">
@@ -30,26 +30,63 @@
 <body>
     {% include "_messages.html" %}
     <header>
-        <div>
-            <a href="{{ url_for('redbloom.index') }}">
-                <img class="logo" src="{{ url_for('static', filename='logo.png') }}">
+        <div class="brand">
+            <a href="{{ url_for('redbloom.about') }}">
+                <img src="{{ url_for('static', filename='img/redbloom.png') }}" class="logo">
                 <h1>Red Bloom</h1>
             </a>
+            <div id="js-menu-toggle" class="menu-toggle">
+                <img data-open="{{ url_for('static', filename='img/menu.svg') }}"
+                     data-close="{{ url_for('static', filename='img/close.svg') }}"
+                     src="{{ url_for('static', filename='img/menu.svg') }}">
+            </div>
         </div>
         <nav>
-            <a href="{{ url_for('redbloom.events') }}">Events</a>
-            <a href="{{ url_for('front.issue', slug='working-groups') }}">Working Groups</a>
-            <a href="{{ url_for('redbloom.about') }}">About</a>
-            <a href="{{ url_for('redbloom.get_involved') }}">Get Involved</a>
+            <ul>
+                <li><a {% if request.path == url_for('redbloom.news') %}class="active"{% endif %} href="{{ url_for('redbloom.news') }}">News / Writing</a></li>
+                <li><a {% if request.path == url_for('redbloom.events') %}class="active"{% endif %} href="{{ url_for('redbloom.events') }}">Events</a></li>
+                <li>
+                    <div>
+                        <a {% if request.path == url_for('redbloom.working_groups') %}class="active"{% endif %} href="{{ url_for('redbloom.working_groups') }}">Working Groups</a> <img class="menu-expand" src="{{ url_for('static', filename='img/down_arrow.svg') }}">
+                    </div>
+                    <ul class="menu--working-groups">
+                        {% for wg in wgs %}
+                            <li><a href="{{ url_for('redbloom.working_group', slug=wg.slug) }}">{{ wg.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>
+                    <a {% if request.path == url_for('redbloom.points_of_unity') %}class="active"{% endif %} href="{{ url_for('redbloom.points_of_unity') }}">Points of Unity</a>
+                </li>
+                <li>
+                    <a {% if request.path == url_for('redbloom.about') %}class="active"{% endif %} href="{{ url_for('redbloom.about') }}">About</a>
+                </li>
+            </ul>
         </nav>
     </header>
+
+    <div class="get-involved">
+        <svg version="1.1" xmlns="http://www.w3.org/800/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="80px" height="80px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
+            <defs>
+                <path id="circlePath" d="M0,40a40,40 0 1,0 80,0a40,40 0 1,0 -80,0"/>
+            </defs>
+            <g>
+                <use xlink:href="#circlePath" fill="none"/>
+                <text>
+                <textPath xlink:href="#circlePath"><a href="{{ url_for('redbloom.get_involved') }}">Get Involved  Get Involved</a></textPath>
+                </text>
+            </g>
+        </svg>
+    </div>
+
     <main>
         {% block content %}
         {% endblock %}
     </main>
-    <footer>
-        Footer TK
-    </footer>
+
+    <script>
+        const WORKING_GROUPS = {{ wgs_json|safe }};
+    </script>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </body>
 </html>
-

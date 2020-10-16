@@ -2,38 +2,14 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    {% if featured %}
-        <div class="featured-post" style="background-image:url({{ featured.image.path }})";>
-            {% set url = url_for('redbloom.post', issue=featured.issue.slug, slug=featured.slug) %}
-            <div class="featured-post--info">
-                <h2><a href="{{ url }}">{{ featured.title }}</a></h2>
-                {% if featured.event %}
-                    <h3>{{ featured.event }}</h3>
-                {% endif %}
-            </div>
-            <a class="featured-post--link" href="{{ url }}"></a>
-        </div>
-    {% endif %}
-    <div class="content">
-        <div class="upcoming-events">
-            <h2>Upcoming Events</h2>
-            {% for post in events %}
-                <div class="event-item">
-                    <div class="event-item--image">
-                        <a href="{{ url }}"><img src="{{ post.image.path }}" /></a>
-                    </div>
-                    <div class="event-item--body">
-                        <h2><a href="{{ url }}">{{ post.title }}</a></h2>
-                        {{ post.event }}
-                        <p>{{ post.desc }}</p>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-
-        <h2>Latest News</h2>
+<div class="content">
+    {% if featured %}{% endif %}
+    {% if not posts %}
+        <div class="placeholder">No posts yet.</div>
+    {% else %}
         {% for post in posts %}
-            {{ post_item(post) }}
+            {{ post_item(post, show_date=true, wg=post.issue) }}
         {% endfor %}
-    </div>
+    {% endif %}
+</div>
 {% endblock %}

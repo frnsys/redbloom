@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="content">
+    {% for issue in working_groups %}
+        <article class="working-group">
+            <a href="{{ url_for('redbloom.working_group', slug=issue.slug) }}"><img src="{{ issue.logo_url }}"></a>
+            <p>{{ issue.description }}</p>
+        </article>
+    {% endfor %}
+</div>
+{% endblock %}
+
