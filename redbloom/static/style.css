@@ -192,6 +192,7 @@ figure img {
   position: fixed;
   bottom: 1em;
   right: 1em;
+  z-index: 1;
 }
 .get-involved svg text a {
   fill: #d91213;
@@ -262,7 +263,9 @@ figure img {
     padding-left: 2em;
   }
   header.open {
-    min-height: 100vh;
+    max-height: 100vh;
+    overflow-y: scroll;
+    z-index: 2;
   }
   header.open nav {
     display: block;

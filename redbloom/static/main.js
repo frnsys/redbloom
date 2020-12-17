@@ -3,8 +3,10 @@ document.getElementById('js-menu-toggle').addEventListener('click', (ev) => {
   header.classList.toggle('open');
   if (header.classList.contains('open')) {
     ev.target.src = ev.target.dataset['close'];
+    document.body.style.overflow = 'hidden';
   } else {
     ev.target.src = ev.target.dataset['open'];
+    document.body.style.overflow = 'auto';
   }
 });
 
