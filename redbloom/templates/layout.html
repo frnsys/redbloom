@@ -32,7 +32,7 @@
     <header>
         <div class="brand">
             <a href="{{ url_for('redbloom.about') }}">
-                <img src="{{ url_for('static', filename='img/redbloom.png') }}" class="logo">
+                <img src="{{ url_for('static', filename='img/redbloom.png') }}" class="logo" alt="Hammer and sickle with flowers blooming.">
                 <h1>Red Bloom</h1>
             </a>
             <div id="js-menu-toggle" class="menu-toggle">
@@ -57,6 +57,11 @@
                 </li>
                 <li>
                     <a {% if request.path == url_for('redbloom.points_of_unity') %}class="active"{% endif %} href="{{ url_for('redbloom.points_of_unity') }}">Points of Unity</a>
+                </li>
+                <li id="menu--logo">
+                    <a href="{{ url_for('redbloom.about') }}">
+                        <img src="{{ url_for('static', filename='img/redbloom.png') }}" class="logo" alt="Hammer and sickle with flowers blooming.">
+                    </a>
                 </li>
                 <li>
                     <a {% if request.path == url_for('redbloom.about') %}class="active"{% endif %} href="{{ url_for('redbloom.about') }}">About</a>
