@@ -276,6 +276,9 @@ figure img {
     position: relative;
     padding-left: 2em;
   }
+  .menu--working-groups li:first-child {
+    margin-top: 0;
+  }
   .menu--working-groups li:last-child {
     margin-bottom: 0;
   }
