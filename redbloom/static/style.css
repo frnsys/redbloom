@@ -207,6 +207,7 @@ figure img {
   font-size: 0.7em;
   letter-spacing: 3px;
   text-decoration: none;
+  white-space: pre;
 }
 .get-involved svg {
   animation-name: rotate;
@@ -285,6 +286,7 @@ figure img {
   }
   header.open nav {
     display: block;
+    padding-bottom: 2em;
   }
   .menu-toggle {
     display: block;
@@ -296,6 +298,7 @@ figure img {
     width: 24px;
     height: 24px;
     vertical-align: sub;
+    display: none;
   }
   .content-calendar {
     margin-left: 0;
