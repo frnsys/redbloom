@@ -295,8 +295,8 @@ figure img {
     height: 32px;
   }
   .menu-expand {
-    width: 24px;
-    height: 24px;
+    width: 1em;
+    height: 1em;
     vertical-align: sub;
     display: none;
   }
