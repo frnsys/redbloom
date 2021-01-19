@@ -66,6 +66,9 @@
                 <li>
                     <a {% if request.path == url_for('redbloom.about') %}class="active"{% endif %} href="{{ url_for('redbloom.about') }}">About</a>
                 </li>
+                <li>
+                    <a {% if request.path == url_for('redbloom.get_involved') %}class="active"{% endif %} href="{{ url_for('redbloom.get_involved') }}">Get Involved</a>
+                </li>
             </ul>
         </nav>
     </header>

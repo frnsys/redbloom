@@ -81,6 +81,9 @@ header nav > ul {
   align-items: center;
   background: #F5F5F5;
 }
+header nav > ul > li:last-child { /* get involved */
+  display: none;
+}
 header nav > ul > li:hover ul {
   display: block;
 }
@@ -281,6 +284,9 @@ figure img {
   }
   .menu--working-groups li:last-child {
     margin-bottom: 0;
+  }
+  header nav > ul > li:last-child { /* get involved */
+    display: block;
   }
   header.open {
     max-height: 100vh;
