@@ -70,19 +70,21 @@
         </nav>
     </header>
 
-    <div class="get-involved">
-        <svg version="1.1" xmlns="http://www.w3.org/800/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="120px" height="120px" viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
-            <defs>
-                <path id="circlePath" d="M0,60a60,60 0 1,0 120,0a60,60 0 1,0 -120,0"/>
-            </defs>
-            <g>
-                <use xlink:href="#circlePath" fill="none"/>
-                <text>
-                <textPath xlink:href="#circlePath"><a href="{{ url_for('redbloom.get_involved') }}">Get Involved   Get Involved</a></textPath>
-                </text>
-            </g>
-        </svg>
-    </div>
+    <a href="{{ url_for('redbloom.get_involved') }}">
+        <div class="get-involved">
+            <svg version="1.1" xmlns="http://www.w3.org/800/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="120px" height="120px" viewBox="0 0 120 120" enable-background="new 0 0 120 120" xml:space="preserve">
+                <defs>
+                    <path id="circlePath" d="M0,60a60,60 0 1,0 120,0a60,60 0 1,0 -120,0"/>
+                </defs>
+                <g>
+                    <use xlink:href="#circlePath" fill="none"/>
+                    <text>
+                    <textPath xlink:href="#circlePath"><a href="{{ url_for('redbloom.get_involved') }}">Get Involved   Get Involved</a></textPath>
+                    </text>
+                </g>
+            </svg>
+        </div>
+    </a>
 
     <main>
         {% block content %}
