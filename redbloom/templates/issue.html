@@ -10,6 +10,6 @@
             {{ post_item(post, show_date=true, wg=issue) }}
         {% endfor %}
     {% endif %}
-    <img class="working-group-issue-logo" src="{{ issue.logo_url }}">
+    <img class="working-group-issue-logo" src="{{ issue.logo_url }}" alt="{{ issue.logo_description }}">
 </div>
 {% endblock %}

@@ -21,7 +21,7 @@
 <div class="content">
     <article>
         {% if post.image %}
-            <figure>
+            <figure class="post--image">
                 <img src="{{ post.image.path }}" />
             </figure>
         {% endif %}
@@ -39,5 +39,6 @@
             {{ post.html|safe }}
         </div>
     </article>
+    <a href="{{ url_for('redbloom.working_group', slug=post.issue.slug) }}"><img class="working-group-issue-logo" src="{{ post.issue.logo_url }}" alt="{{ post.issue.logo_description }}"></a>
 </div>
 {% endblock %}

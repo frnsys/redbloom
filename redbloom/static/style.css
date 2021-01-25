@@ -163,6 +163,12 @@ figure {
 figure img {
   max-width: 100%;
 }
+figure.post--image {
+  text-align: center;
+}
+figure.post--image img {
+  max-height: 320px;
+}
 
 .content-calendar {
   max-width: 960px;
