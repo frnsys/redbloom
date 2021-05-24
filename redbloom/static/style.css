@@ -98,6 +98,15 @@ header nav .logo {
   vertical-align: baseline;
 }
 
+#flashes {
+	list-style-type: none;
+	text-align: center;
+	margin: 0;
+	background: #eaeaea;
+	font-size: 0.75em;
+	padding: 0.25em 0;
+}
+
 .red-bloom {
   color: #d91213;
   font-weight: bold;
