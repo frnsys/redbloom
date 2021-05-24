@@ -43,11 +43,11 @@
         </div>
         <nav>
             <ul>
-                <li><a {% if request.path == url_for('redbloom.news') %}class="active"{% endif %} href="{{ url_for('redbloom.news') }}">News / Writing</a></li>
+                <li><a {% if request.path == url_for('redbloom.news') %}class="active"{% endif %} href="{{ url_for('redbloom.news') }}">Articles</a></li>
                 <li><a {% if request.path == url_for('redbloom.events') %}class="active"{% endif %} href="{{ url_for('redbloom.events') }}">Events</a></li>
                 <li>
                     <div>
-                        <a {% if request.path == url_for('redbloom.working_groups') %}class="active"{% endif %} href="{{ url_for('redbloom.working_groups') }}">Working Groups</a> <img class="menu-expand" src="{{ url_for('static', filename='img/down_arrow.svg') }}">
+                        <a {% if request.path == url_for('redbloom.working_groups') %}class="active"{% endif %} href="{{ url_for('redbloom.working_groups') }}">Our Work</a> <img class="menu-expand" src="{{ url_for('static', filename='img/down_arrow.svg') }}">
                     </div>
                     <ul class="menu--working-groups">
                         {% for wg in wgs %}
@@ -64,10 +64,10 @@
                     </a>
                 </li>
                 <li>
-                    <a {% if request.path == url_for('redbloom.about') %}class="active"{% endif %} href="{{ url_for('redbloom.about') }}">About</a>
+                    <a {% if request.path == url_for('redbloom.get_involved') %}class="active"{% endif %} href="{{ url_for('redbloom.get_involved') }}">Join</a>
                 </li>
                 <li>
-                    <a {% if request.path == url_for('redbloom.get_involved') %}class="active"{% endif %} href="{{ url_for('redbloom.get_involved') }}">Get Involved</a>
+                    <a {% if request.path == url_for('redbloom.about') %}class="active"{% endif %} href="{{ url_for('redbloom.about') }}">About</a>
                 </li>
             </ul>
         </nav>
