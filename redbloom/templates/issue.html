@@ -3,6 +3,7 @@
 
 {% block content %}
 <div class="content">
+    <p class="working-group-description">{{ issue.description }}</p>
     {% if not issue.published_posts %}
         <div class="placeholder">No posts yet.</div>
     {% else %}

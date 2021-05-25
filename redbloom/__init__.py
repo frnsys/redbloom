@@ -10,8 +10,8 @@ routes = Blueprint('redbloom', __name__)
 
 @routes.route('/news')
 def news():
-    featured = Post.query.filter(Post.published, Post.tags.contains('featured')).all()
-    posts = Post.query.filter(Post.published, Post.event==None).limit(20)
+    featured = Post.query.filter(Post.published, Post.tags.contains('featured'), Post.issue.has(slug='red-bloom')).all()
+    posts = Post.query.filter(Post.published, Post.event==None, Post.issue.has(slug='red-bloom')).limit(20)
     return render_template('index.html', featured=featured, posts=posts)
 
 @routes.route('/working-groups')
